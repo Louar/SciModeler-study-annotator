@@ -1,0 +1,25 @@
+.document {
+    width: 1000px;
+    background-color: #f1f2f6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0;
+
+    pdf-page {
+        margin: 12px 0;
+        background-color: #fff;
+        border: 1px solid #a4b0be;
+    }
+}
+
+pdf-annotation-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: calc(100vw - 1000px);
+    height: 100vh;
+    padding: 16px;
+    background-color: #fff;
+    border-left: 1px solid #57606f;
+}

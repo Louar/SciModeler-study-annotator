@@ -1,0 +1,97 @@
+{
+  "configVersion": 1,
+  "timestamp": 1631258274880,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/index.html",
+        "/main.3ea663d779f69e1bd266.js",
+        "/manifest.webmanifest",
+        "/polyfills.473d81133cdd8fa76063.js",
+        "/runtime.66b361e5e543abfbbf63.js",
+        "/styles.23385f19aa09823ed820.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/assets/documents/dhondt2019evaluation-annot.json",
+        "/assets/documents/dhondt2019evaluation.pdf",
+        "/assets/documents/nuijten2019evaluation-annot.json",
+        "/assets/documents/nuijten2019evaluation.pdf",
+        "/assets/documents/nuijten2021preadolescent-.pdf",
+        "/assets/documents/nuijten2021preadolescent-annot.json",
+        "/assets/documents/nuijten2021preadolescent.pdf",
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/loading-icon.ff2dfa442d903d9d5e30.gif",
+        "/shadow.020ca14de41fcc6c4d0b.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/assets/documents/dhondt2019evaluation-annot.json": "88aedabdacc88954656679720e9d0ea5c5b2ff8e",
+    "/assets/documents/dhondt2019evaluation.pdf": "11c9b28cfc80b974f98dd3f85cfcf310b3fcef8e",
+    "/assets/documents/nuijten2019evaluation-annot.json": "55cf26be5e432b48bc3a3c633e1cf5ddc4653ed6",
+    "/assets/documents/nuijten2019evaluation.pdf": "bcfbb6f886e5ceee2fa7c1177521b84cc3c93f16",
+    "/assets/documents/nuijten2021preadolescent-.pdf": "2af3c52b18621c557df1a0bb5533dc7603f1587f",
+    "/assets/documents/nuijten2021preadolescent-annot.json": "0be1abee1c33cd494188eb59c138f808460e65c5",
+    "/assets/documents/nuijten2021preadolescent.pdf": "71e80fc50f4c4ab0c8f9aa2c4ac17dc953c5bc3b",
+    "/assets/icons/icon-128x128.png": "b3d952aa983d116ba074faa176332b6008c5e0ba",
+    "/assets/icons/icon-144x144.png": "881bb276ef79380ecd840d32ef8ca50ef5e137ee",
+    "/assets/icons/icon-152x152.png": "10e1e096e52eb23821acb760ad9fa10ccc305f84",
+    "/assets/icons/icon-192x192.png": "ab6897f964c9c3fb0af40fca3d47f5fd12787e5d",
+    "/assets/icons/icon-384x384.png": "3cd010344723837ddf406d09668dac06e2e0afcd",
+    "/assets/icons/icon-512x512.png": "c6fc17fcba394288226bc9bc7a4dab9240ba4107",
+    "/assets/icons/icon-72x72.png": "7c2ecf7e7e59c532bc40a11ebd3fd59bfcf6eb91",
+    "/assets/icons/icon-96x96.png": "f502a343761cfd7508ec90099301793b0c71af0d",
+    "/index.html": "366ff43c8dbeedfa5f7f3867d2256caf1c5b197f",
+    "/loading-icon.ff2dfa442d903d9d5e30.gif": "e043879d3ee94a3edf10260f21f44bfa4a6fc66e",
+    "/main.3ea663d779f69e1bd266.js": "ce4c32fa3760857dd0f664aea7a0d108b6ff40af",
+    "/manifest.webmanifest": "01b2ca3de67192286107de8beb65965cb27cdbb7",
+    "/polyfills.473d81133cdd8fa76063.js": "999684c64216d0c6e5cf26ac0630ca84ff4b1f4d",
+    "/runtime.66b361e5e543abfbbf63.js": "b7fe2fa1bddb5fca7d507aa82b150d4aaa787951",
+    "/shadow.020ca14de41fcc6c4d0b.png": "b931e2de029146b2e1502ebd61c8160e72d6306c",
+    "/styles.23385f19aa09823ed820.css": "a8ded13bcf4c3183db038671b3ce08f559bb932d"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

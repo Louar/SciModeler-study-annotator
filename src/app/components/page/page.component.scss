@@ -1,0 +1,90 @@
+.textLayer {
+    opacity: 1;
+
+    &::ng-deep ::selection {
+        // background-color: rgba(253, 203, 110, .4) !important;
+        background-color: rgba(87, 101, 116, 0.3) !important;
+    }
+
+    .highlightLayer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+
+        .highlight {
+            position: absolute;
+            z-index: 99;
+            background-color: rgba(87, 101, 116, 0.4);
+            transition: background-color linear 125ms;
+            cursor: pointer;
+
+            &.toback {
+                cursor: default;
+                z-index: inherit;
+            }
+
+
+            &.e-Experiment {
+                background-color: rgba(55, 201, 186, .4);
+            }
+
+            &.e-Treatment {
+                background-color: rgba(253, 119, 119, .4);
+            }
+
+            &.e-Context {
+                background-color: rgba(52, 172, 116, 0.4);
+            }
+
+            &.e-Intervention {
+                background-color: rgba(253, 126, 86, .4);
+            }
+
+            &.e-Platform {
+                background-color: rgba(252, 210, 68, .4);
+            }
+
+            &.e-TreatmentAssignment {
+                background-color: rgba(248, 176, 162, .4);
+            }
+
+            &.e-Population {
+                background-color: rgba(125, 100, 251, .4);
+            }
+
+            &.e-Sample {
+                background-color: rgba(163, 99, 231, .4);
+            }
+
+            &.e-Group {
+                background-color: rgba(204, 135, 237, .4);
+            }
+
+            &.e-Demographic {
+                background-color: rgba(245, 165, 193, .4);
+            }
+
+            &.e-Outcome {
+                background-color: rgba(184, 232, 152, .4);
+            }
+
+            &.e-Variable {
+                background-color: rgba(208, 215, 224, .4);
+            }
+
+            &.e-Classification {
+                background-color: rgba(132, 204, 220, .4);
+            }
+            &.e-Source {
+                background-color: rgba(25, 160, 184, 0.4);
+            }
+
+            &.selected {
+                background-color: rgba(87, 101, 116, 0.6) !important;
+            }
+        }
+    }
+}

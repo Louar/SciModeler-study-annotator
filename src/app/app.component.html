@@ -1,0 +1,5 @@
+<div class="document" *ngIf="isReady">
+    <pdf-page *ngFor="let pnum of pnums" [pdf]="pdf" [pnum]="pnum"></pdf-page>
+</div>
+
+<pdf-annotation-menu></pdf-annotation-menu>

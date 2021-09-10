@@ -1,0 +1,14 @@
+<canvas #canvasEl></canvas>
+
+<div #textsEl class="textLayer" (mousedown)="mousedown($event)" (mouseover)="mouseover($event)"
+    (mouseup)="mouseup($event)">
+
+    <div class="highlightLayer">
+        <div *ngFor="let highlight of highlights">
+            <div *ngFor="let rect of highlight.position.rects" class="highlight" (click)="selectHighlight(highlight)"
+                [ngClass]="[isHighlighting ? 'toback' : '', shid === highlight.id ? 'selected' : '', highlight.tags?.entity ? 'e-' + highlight.tags.entity : '']"
+                [ngStyle]="{ top: rect.t + 'px', left: rect.l + 'px', height: rect.h + 'px', width: rect.w + 'px'}">
+            </div>
+        </div>
+    </div>
+</div>

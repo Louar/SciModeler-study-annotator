@@ -1,0 +1,137 @@
+<ng-container *ngIf="highlight; else introduction;">
+
+    <label>
+        <p>Selected text</p>
+        <textarea [(ngModel)]="highlight.selection" rows="5"></textarea>
+    </label>
+
+    <label>
+        <p>Entity</p>
+        <ng-select #entitySelect [items]="dm.entities" bindValue="ref" bindLabel="label" appearance="outline"
+            [(ngModel)]="highlight.tags.entity" (change)="persistHighlight(); updateEntity();">
+
+            <ng-template ng-option-tmp let-item="item" let-index="index" let-search="q">
+                <div style="display: flex; align-items: center;">
+                    <div class="e-label e-Experiment" [ngClass]="[item.label ? 'e-' + item.label : '']"></div>
+                    {{ item.label }}
+                </div>
+            </ng-template>
+
+        </ng-select>
+    </label>
+
+
+    <label>
+        <p>Instance</p>
+        <ng-select [disabled]="!highlight.tags.entity" [items]="dm.instances" bindLabel="label" [addTag]="addInstanceFn"
+            [(ngModel)]="highlight.tags.instance" appearance="outline"
+            (change)="persistHighlight(); fetchDatamodel(highlight.tags.entity, ['relations']);">
+        </ng-select>
+    </label>
+
+
+    <label>
+        <p>Attribute</p>
+        <ng-select [disabled]="!highlight.tags.entity" [items]="dm.attributes" bindValue="ref" bindLabel="label"
+            [(ngModel)]="highlight.tags.attribute" appearance="outline" (change)="persistHighlight()">
+        </ng-select>
+    </label>
+
+    <label>
+        <p>Relations</p>
+        <ng-select [disabled]="!highlight.tags.entity || !highlight.tags.instance.ref" [items]="dm.relations"
+            bindValue="ref" bindLabel="label" [multiple]="true" appearance="outline"
+            [(ngModel)]="highlight.tags.relations" (change)="persistHighlight()" (add)="updateRelations('add', $event)"
+            (remove)="updateRelations('remove', $event)">
+        </ng-select>
+    </label>
+
+    <label>
+        <p>Notes</p>
+        <textarea [(ngModel)]="highlight.notes" (blur)="persistHighlight()" rows="5"></textarea>
+    </label>
+
+
+</ng-container>
+
+<ng-template #introduction>
+    <h1>Study annotator</h1>
+    <h2>A <em>SciModeler</em> tool</h2>
+
+    <p>
+        <strong>Annotated studies</strong>
+    </p>
+    <ul>
+        <li class="doclink" [ngClass]="{ selected: doc.doi === sdoi }" *ngFor="let doc of docs"
+            (click)="getDocument(doc.doi)">
+            <p  style="font-size: .8rem;">
+                <span style="font-weight: 300;">{{ doc.authors }}</span> <span style="font-weight: 500;">{{ doc.title
+                    }}</span>. {{ doc.year }}. <em>{{ doc.outlet }}</em>.
+            </p>
+        </li>
+    </ul>
+    <br>
+
+    <p>
+        <strong>Annotation entities</strong>
+    </p>
+    <ul>
+        <li>
+            <div class="e-label e-Experiment"></div>
+            <p>Experiment</p>
+        </li>
+        <li>
+            <div class="e-label e-Context"></div>
+            <p>Context</p>
+        </li>
+        <li>
+            <div class="e-label e-Treatment"></div>
+            <p>Treatment</p>
+        </li>
+        <li>
+            <div class="e-label e-Intervention"></div>
+            <p>Intervention</p>
+        </li>
+        <li>
+            <div class="e-label e-Platform"></div>
+            <p>Platform</p>
+        </li>
+        <li>
+            <div class="e-label e-TreatmentAssignment"></div>
+            <p>Treatment assignment</p>
+        </li>
+
+        <li>
+            <div class="e-label e-Population"></div>
+            <p>Population</p>
+        </li>
+        <li>
+            <div class="e-label e-Sample"></div>
+            <p>Sample</p>
+        </li>
+        <li>
+            <div class="e-label e-Group"></div>
+            <p>Group</p>
+        </li>
+        <li>
+            <div class="e-label e-Demographic"></div>
+            <p>Demographic</p>
+        </li>
+        <li>
+            <div class="e-label e-Outcome"></div>
+            <p>Outcome</p>
+        </li>
+        <li>
+            <div class="e-label e-Variable"></div>
+            <p>Variable</p>
+        </li>
+        <li>
+            <div class="e-label e-Classification"></div>
+            <p>Classification</p>
+        </li>
+        <li>
+            <div class="e-label e-Source"></div>
+            <p>Source</p>
+        </li>
+    </ul>
+</ng-template>

@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    background-color: #f1f2f6;
+
+    * {
+        box-sizing: border-box;
+    }
+}
+
+
+ng-select {
+    .ng-clear-wrapper {
+        bottom: 18px !important;
+    }
+
+    .ng-arrow-wrapper {
+        bottom: 21px !important;
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items {
+        max-height: 480px;
+    }
+}

@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { ConnectableObservable, Subject } from "rxjs";
+import { Subject } from "rxjs";
+import { environment } from "src/environments/environment";
 import { Doc } from "../model/document.model";
 import { Highlight } from '../model/highlight.model';
 import { Study } from "../model/study.model";
@@ -34,7 +35,7 @@ export class HighlightService {
         if (doc.annoturi) {
             await new Promise<void>((resolve) => {
                 if (doc.annoturi) {
-                    this.http.get(doc.annoturi).subscribe(
+                    this.http.get(environment.production ? '/SciModeler-study-annotator' : '' + doc.annoturi).subscribe(
                         (data: any) => {
                             study = data as Study;
                             resolve();

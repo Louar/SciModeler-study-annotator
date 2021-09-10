@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { getDocument, GlobalWorkerOptions, version } from 'pdfjs-dist';
 import { PDFDocumentProxy } from 'pdfjs-dist/types/display/api';
-import { string32 } from 'pdfjs-dist/types/shared/util';
+import { environment } from 'src/environments/environment';
 import { Doc } from './model/document.model';
 import { Study } from './model/study.model';
 import { DataModelService } from './services/data-model.service';
@@ -85,7 +85,7 @@ export class AppComponent implements OnInit {
 
   async getDocument(uri: string): Promise<void> {
 
-    await getDocument(uri).promise.then(
+    await getDocument(environment.production ? '/SciModeler-study-annotator' : '' + uri).promise.then(
       (pdf: PDFDocumentProxy) => {
         this.pdf = pdf;
       }

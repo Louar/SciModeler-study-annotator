@@ -3,6 +3,7 @@ import { Highlight } from 'src/app/model/highlight.model';
 import { DataModelService } from 'src/app/services/data-model.service';
 import { DocumentService } from '../../services/document.service';
 import { HighlightService } from '../../services/highlight.service';
+import { Study } from '../../model/study.model';
 
 @Component({
   selector: 'pdf-annotation-menu',
@@ -16,6 +17,10 @@ export class AnnotationMenuComponent implements OnInit, AfterViewInit {
 
   dm: any = {};
   highlight!: Highlight | null;
+
+  highlights: Highlight[] | null = null;
+
+
 
   constructor(
     private ds: DocumentService,
@@ -38,19 +43,22 @@ export class AnnotationMenuComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.hs.highlight$.subscribe(
       (highlight: Highlight) => {
-        if (this.highlight) {
-          this.persistHighlight();
-        }
-
-        this.highlight = highlight;
-        this.persistHighlight(true);
-
-        if (this.highlight?.tags?.entity) {
-          this.fetchDatamodel(this.highlight.tags.entity)
-        }
-
+        this.open(highlight);
       }
     );
+  }
+
+  open(highlight: Highlight) {
+    if (this.highlight) {
+      this.persistHighlight();
+    }
+
+    this.highlight = highlight;
+    this.persistHighlight(true);
+
+    if (this.highlight?.tags?.entity) {
+      this.fetchDatamodel(this.highlight.tags.entity)
+    }
   }
 
 
@@ -110,6 +118,22 @@ export class AnnotationMenuComponent implements OnInit, AfterViewInit {
     this.hs.updateRelations(method, iids);
   }
 
+
+
+
+  async showAllHighlights() {
+    if (!this.sdoi) { return; }
+
+    const study: Study = this.hs.getStudy();
+    if (study && study.highlights) {
+      this.highlights = study.highlights
+        .sort((a: Highlight, b: Highlight) => a.position.rects[0].t - b.position.rects[0].t)
+        .sort((a: Highlight, b: Highlight) => a.position.pnum - b.position.pnum);
+    }
+
+
+
+  }
 
 
 }

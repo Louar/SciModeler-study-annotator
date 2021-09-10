@@ -8,10 +8,7 @@
 label {
     padding-top: 16px;
     padding-bottom: 8px;
-
-    &:not(:first-child) {
-        border-top: 1px solid #ccc;
-    }
+    border-top: 1px solid #ccc;
 
     p {
         margin: 0;
@@ -53,32 +50,11 @@ h2 {
 }
 
 
-ul {
-    margin: 0;
-    padding-left: 16px;
-
-    li {
-        display: flex;
-        align-items: center;
-
-        &.doclink {
-            cursor: pointer;
-
-            &.selected {
-                color: #54a0ff;
-            }
-        }
-
-        p {
-            margin: 6px 0;
-        }
-    }
-}
 
 
 .e-label {
-    width: 21px;
     height: 21px;
+    width: 21px;
     margin-right: 12px;
     border-radius: 3px;
     border-width: 2px;
@@ -148,8 +124,46 @@ ul {
         background-color: rgba(132, 204, 220, .4);
         border-color: rgba(132, 204, 220, 1);
     }
+
     &.e-Source {
         background-color: rgba(25, 160, 184, 0.4);
         border-color: rgba(25, 160, 184, 1);
+    }
+}
+
+
+
+
+ul {
+    margin: 0;
+    padding-left: 16px;
+
+    li {
+        display: flex;
+        align-items: center;
+
+        &.doclink {
+            cursor: pointer;
+
+            &.selected {
+                color: #54a0ff;
+            }
+        }
+
+        &.highlightlink {
+            display: block;
+            padding: 12px 0;
+            border-top: 1px solid #ccc;
+
+            .e-label {
+                height: 16px;
+                width: 16px;
+                margin-right: 6px;
+            }
+        }
+
+        p {
+            margin: 6px 0;
+        }
     }
 }

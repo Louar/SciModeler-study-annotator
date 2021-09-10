@@ -152,28 +152,27 @@ export class DataModelService {
 
 
             relations: [
-                { entities: ['Source', 'Experiment'] },
-                { entities: ['Experiment', 'Treatment'] },
-                { entities: ['Experiment', 'Context'] },
-                { entities: ['Treatment', 'TreatmentAssignment'] },
-                { entities: ['Treatment', 'Intervention'] },
-                { entities: ['Treatment', 'Classification'] },
-                { entities: ['Intervention', 'Classification'] },
-                { entities: ['Intervention', 'Platform'] },
-                { entities: ['Context', 'Population'] },
-                { entities: ['Population', 'Demographic'] },
-                { entities: ['Population', 'Sample'] },
-                { entities: ['Sample', 'Demographic'] },
-                { entities: ['Group', 'Demographic'] },
-                { entities: ['Sample', 'Group'] },
-                { entities: ['TreatmentAssignment', 'Group'] },
-                { entities: ['Demographic', 'Variable'] },
-                { entities: ['Treatment', 'Outcome'] },
-                { entities: ['Outcome', 'Variable'] },
-                { entities: ['Experiment', 'Variable'] },
+                { entities: ['Source', 'Experiment'], type: 'PRESENTS_EXPERIMENT' },
+                { entities: ['Experiment', 'Treatment'], type: 'EVALUATES_TREATMENT' },
+                { entities: ['Experiment', 'Context'], type: 'EXECUTED_WITHIN_CONTEXT' },
+                { entities: ['Experiment', 'Variable'], type: 'HAS_INTEREST_IN_VARIABLE' },
+                { entities: ['Treatment', 'TreatmentAssignment'], type: 'AS_ASSIGNED_BY' },
+                { entities: ['Treatment', 'Outcome'], type: 'HAS_OUTCOME' },
+                { entities: ['Classification', 'Treatment'], type: 'OF_TREATMENT' },
+                { entities: ['Classification', 'Intervention'], type: 'OF_INTERVENTION' },
+                { entities: ['Intervention', 'Treatment'], type: 'DELIVERS_TREATMENT' },
+                { entities: ['Intervention', 'Platform'], type: 'HOSTED_ON_PLATFORM' },
+                { entities: ['Context', 'Population'], type: 'TARGETS_POPULATION' },
+                { entities: ['Population', 'Sample'], type: 'CONTAINS_SAMPLE' },
+                { entities: ['Sample', 'Group'], type: 'CONTAINS_GROUP' },
+                { entities: ['Demographic', 'Population'], type: 'FOR_POPULATION' },
+                { entities: ['Demographic', 'Sample'], type: 'FOR_SAMPLE' },
+                { entities: ['Demographic', 'Group'], type: 'FOR_GROUP' },
+                { entities: ['Demographic', 'Variable'], type: 'ON_VARIABLE' },
+                { entities: ['TreatmentAssignment', 'Group'], type: 'TO_GROUP' },
+                { entities: ['Outcome', 'Variable'], type: 'BASED_ON_VARIABLE' },
             ]
         };
-
 
 
     constructor() {
@@ -201,6 +200,12 @@ export class DataModelService {
         return this.dm.relations.filter((r: any) => r.entities.includes(eref)).flatMap((r: any) => r.entities).filter((e: any) => e !== eref);
     }
 
+    getRelationType(ea: string, eb: string) {
+        const relation = this.dm.relations.find((r: any) => r.entities.includes(ea) && r.entities.includes(eb));
+        if (relation) {
+            return relation.type;
+        }
+    }
 
 
 }

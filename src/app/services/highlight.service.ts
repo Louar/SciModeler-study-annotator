@@ -24,8 +24,8 @@ export class HighlightService {
 
 
 
-    getStudy(): Promise<Study> {
-        return new Promise((resolve) => resolve(this.study));
+    getStudy(): Study {
+        return this.study;
     }
 
     async setStudy(doc: Doc) {

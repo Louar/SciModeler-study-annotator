@@ -37,7 +37,7 @@ export class PageComponent implements OnInit, AfterViewInit {
 
 
   async ngOnInit() {
-    await this.hs.getStudy().then((study: Study) => this.study = study);
+    this.study = this.hs.getStudy();
     this.parseHighlights();
 
     this.hs.study$.subscribe(

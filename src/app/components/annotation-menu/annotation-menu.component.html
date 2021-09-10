@@ -1,4 +1,9 @@
-<ng-container *ngIf="highlight; else introduction;">
+<ng-container *ngIf="highlight; else overview;">
+    <p style="display: flex; align-items: center; justify-content: space-between;">
+        <strong>Edit highlight</strong>
+        <img (click)="highlight = null" style="height: 16px; width: 16px; cursor: pointer;"
+            src="assets/icons/close.svg">
+    </p>
 
     <label>
         <p>Selected text</p>
@@ -54,84 +59,126 @@
 
 </ng-container>
 
-<ng-template #introduction>
-    <h1>Study annotator</h1>
-    <h2>A <em>SciModeler</em> tool</h2>
+<ng-template #overview>
+    <ng-container *ngIf="highlights; else introduction;">
+        <p style="display: flex; align-items: center; justify-content: space-between;">
+            <strong>Overview of highlights</strong>
+            <img (click)="highlights = null" style="height: 16px; width: 16px; cursor: pointer;"
+                src="assets/icons/close.svg">
+        </p>
+        <ul style="padding-left: 0;">
+            <li class="highlightlink" *ngFor="let highlight of highlights" (click)="open(highlight)">
+                <p style="font-size: 1rem;">
+                    Page {{ highlight.position.pnum }}&emsp;
+                    <em style="font-weight: 300;">&ldquo;{{ highlight.selection }}&rdquo;</em>
+                </p>
 
-    <p>
-        <strong>Annotated studies</strong>
-    </p>
-    <ul>
-        <li class="doclink" [ngClass]="{ selected: doc.doi === sdoi }" *ngFor="let doc of docs"
-            (click)="getDocument(doc.doi)">
-            <p  style="font-size: .8rem;">
-                <span style="font-weight: 300;">{{ doc.authors }}</span> <span style="font-weight: 500;">{{ doc.title
-                    }}</span>. {{ doc.year }}. <em>{{ doc.outlet }}</em>.
-            </p>
-        </li>
-    </ul>
-    <br>
+                <div style="display: flex; align-items: center; margin-top: 8px;">
+                    <div class="e-label" [ngClass]="[highlight.tags?.entity ? 'e-' + highlight.tags.entity : '']">
+                    </div>
+                    <p style="font-size: .8rem;">
+                        {{ highlight.tags?.entity }}{{ highlight.tags?.attribute ? '.' + highlight.tags.attribute : '[NO ATTR.]' }}
+                        <span style="margin: 0 10px;">{{ highlight.tags?.instance?.ref ? highlight.tags.instance.ref + ':' + highlight.tags.instance.label : '[NO INST.]' }}</span>
+                        {{ highlight.tags?.relations && highlight.tags?.relations?.length ? 'nrel=' + highlight.tags?.relations?.length : '[NO REL.]' }}
+                    </p>
+                </div>
 
-    <p>
-        <strong>Annotation entities</strong>
-    </p>
-    <ul>
-        <li>
-            <div class="e-label e-Experiment"></div>
-            <p>Experiment</p>
-        </li>
-        <li>
-            <div class="e-label e-Context"></div>
-            <p>Context</p>
-        </li>
-        <li>
-            <div class="e-label e-Treatment"></div>
-            <p>Treatment</p>
-        </li>
-        <li>
-            <div class="e-label e-Intervention"></div>
-            <p>Intervention</p>
-        </li>
-        <li>
-            <div class="e-label e-Platform"></div>
-            <p>Platform</p>
-        </li>
-        <li>
-            <div class="e-label e-TreatmentAssignment"></div>
-            <p>Treatment assignment</p>
-        </li>
+            </li>
+        </ul>
+    </ng-container>
 
-        <li>
-            <div class="e-label e-Population"></div>
-            <p>Population</p>
-        </li>
-        <li>
-            <div class="e-label e-Sample"></div>
-            <p>Sample</p>
-        </li>
-        <li>
-            <div class="e-label e-Group"></div>
-            <p>Group</p>
-        </li>
-        <li>
-            <div class="e-label e-Demographic"></div>
-            <p>Demographic</p>
-        </li>
-        <li>
-            <div class="e-label e-Outcome"></div>
-            <p>Outcome</p>
-        </li>
-        <li>
-            <div class="e-label e-Variable"></div>
-            <p>Variable</p>
-        </li>
-        <li>
-            <div class="e-label e-Classification"></div>
-            <p>Classification</p>
-        </li>
-        <li>
-            <div class="e-label e-Source"></div>
-            <p>Source</p>
-        </li>
-    </ul>
+    <ng-template #introduction>
+
+        <div style="width: 100%; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+                <h1>Study annotator</h1>
+                <h2>A <em>SciModeler</em> tool</h2>
+            </div>
+            <a href="https://github.com/Louar/SciModeler-study-annotator" target="_blank">
+                <img style="height: 32px; width: 32px;" src="assets/icons/github.svg">
+            </a>
+        </div>
+
+
+        <p style="display: flex; align-items: center; justify-content: space-between;">
+            <strong>Annotated studies</strong>
+            <img *ngIf="sdoi" (click)="showAllHighlights()"
+                style="height: 18px; width: 18px; margin-right: 8px; cursor: pointer;"
+                src="assets/icons/highlighter.svg">
+        </p>
+        <ul>
+            <li class="doclink" [ngClass]="{ selected: doc.doi === sdoi }" *ngFor="let doc of docs"
+                (click)="getDocument(doc.doi)">
+                <p style="font-size: .8rem;">
+                    <span style="font-weight: 300;">{{ doc.authors }}</span> <span style="font-weight: 500;">{{
+                        doc.title
+                        }}</span>. {{ doc.year }}. <em>{{ doc.outlet }}</em>.
+                </p>
+            </li>
+        </ul>
+        <br>
+
+        <p>
+            <strong>Annotation entities</strong>
+        </p>
+        <ul>
+            <li>
+                <div class="e-label e-Experiment"></div>
+                <p>Experiment</p>
+            </li>
+            <li>
+                <div class="e-label e-Context"></div>
+                <p>Context</p>
+            </li>
+            <li>
+                <div class="e-label e-Treatment"></div>
+                <p>Treatment</p>
+            </li>
+            <li>
+                <div class="e-label e-Intervention"></div>
+                <p>Intervention</p>
+            </li>
+            <li>
+                <div class="e-label e-Platform"></div>
+                <p>Platform</p>
+            </li>
+            <li>
+                <div class="e-label e-TreatmentAssignment"></div>
+                <p>Treatment assignment</p>
+            </li>
+
+            <li>
+                <div class="e-label e-Population"></div>
+                <p>Population</p>
+            </li>
+            <li>
+                <div class="e-label e-Sample"></div>
+                <p>Sample</p>
+            </li>
+            <li>
+                <div class="e-label e-Group"></div>
+                <p>Group</p>
+            </li>
+            <li>
+                <div class="e-label e-Demographic"></div>
+                <p>Demographic</p>
+            </li>
+            <li>
+                <div class="e-label e-Outcome"></div>
+                <p>Outcome</p>
+            </li>
+            <li>
+                <div class="e-label e-Variable"></div>
+                <p>Variable</p>
+            </li>
+            <li>
+                <div class="e-label e-Classification"></div>
+                <p>Classification</p>
+            </li>
+            <li>
+                <div class="e-label e-Source"></div>
+                <p>Source</p>
+            </li>
+        </ul>
+    </ng-template>
 </ng-template>

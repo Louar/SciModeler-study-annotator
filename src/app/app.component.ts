@@ -1,8 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { getDocument, GlobalWorkerOptions, version } from 'pdfjs-dist';
 import { PDFDocumentProxy } from 'pdfjs-dist/types/display/api';
+import { string32 } from 'pdfjs-dist/types/shared/util';
 import { Doc } from './model/document.model';
 import { Study } from './model/study.model';
+import { DataModelService } from './services/data-model.service';
 import { DocumentService } from './services/document.service';
 import { HighlightService } from './services/highlight.service';
 
@@ -23,13 +25,12 @@ export class AppComponent implements OnInit {
   pdf!: PDFDocumentProxy;
 
   @HostListener('document:keydown.meta.s', ['$event'])
-  async saveAsJson($event: KeyboardEvent) {
+  saveAsJson($event: KeyboardEvent) {
     $event.preventDefault();
 
     if (this.doc && this.pdf) {
 
-      let study: Study | null = null;
-      await this.hs.getStudy().then(s => study = s);
+      let study: Study = this.hs.getStudy();
 
       if (study) {
         const json = JSON.stringify(study);
@@ -45,12 +46,11 @@ export class AppComponent implements OnInit {
   }
 
   @HostListener('document:keydown.meta.e', ['$event'])
-  async saveAsCypher($event: KeyboardEvent) {
+  saveAsCypher($event: KeyboardEvent) {
     $event.preventDefault();
 
     if (this.doc && this.pdf) {
-      let study: Study | null = null;
-      await this.hs.getStudy().then(s => study = s);
+      let study: Study = this.hs.getStudy();
 
       if (study) {
         this.convertToCypher(study);
@@ -60,6 +60,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private ds: DocumentService,
+    private dms: DataModelService,
     private hs: HighlightService,
   ) {
   }
@@ -105,21 +106,28 @@ export class AppComponent implements OnInit {
     let cypher = '';
 
     const sid = study.document.id;
+    if (!sid) {
+      alert('`study.document.id` not found');
+      return;
+    }
 
     const noref = study.highlights.filter(h => !h.tags.instance.ref);
     if (noref.length > 0) {
       alert('Highlights found without instance, see console!');
-      console.warn(noref);
       return;
     }
 
     const iids = [...new Set(study.highlights.map(h => h.tags.instance.ref))];
     for (const iid of iids) {
+      if (!iid) { continue; }
+
       const highlights = study.highlights.filter(h => h.tags.instance.ref === iid);
       const entity = highlights[0].tags.entity;
 
 
-      const attributes: any = {};
+      const attributes: any = {
+        key: `${sid}-${iid.substring(2)}`,
+      };
       for (const highlight of highlights) {
         const attr = highlight.tags.attribute;
         if (attr) {
@@ -131,14 +139,40 @@ export class AppComponent implements OnInit {
         }
       }
 
-
       const attr = this.printObject(attributes);
-      const cmd = `CREATE (n:${entity} {${attr}});`;
+      const cmd = `CREATE (n:${entity} {${attr}});\n\n`;
 
       cypher += cmd;
     }
 
-    console.log(cypher);
+    for (const relation of study.relations) {
+      const [ra, rb] = relation.iids;
+      const ha = study.highlights.find(h => h.tags.instance.ref === ra);
+      const hb = study.highlights.find(h => h.tags.instance.ref === rb);
+
+      if (ha && hb) {
+        const ea = ha.tags.entity;
+        const eb = hb.tags.entity;
+
+        if (ea && eb) {
+          const rtype = this.dms.getRelationType(ea, eb);
+          if (rtype) {
+            const cmd = `MATCH (a:${ea}),(b:${eb}) WHERE a.key = '${sid}-${ra}' AND b.key = '${sid}-${ra}' CREATE (a)-[r:${rtype.substring(2)}]->(b) RETURN type(r);\n\n`;
+            cypher += cmd;
+          }
+        }
+      }
+    }
+
+    // console.log(cypher);
+
+    const element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=UTF-8,' + encodeURIComponent(cypher));
+    element.setAttribute('download', `${sid}-import.txt`);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
   }
 
 

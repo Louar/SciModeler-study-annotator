@@ -1,0 +1,103 @@
+{
+  "configVersion": 1,
+  "timestamp": 1631268772732,
+  "index": "/SciModeler-study-annotator/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/SciModeler-study-annotator/index.html",
+        "/SciModeler-study-annotator/main.d41dd2d57aa6b79df47f.js",
+        "/SciModeler-study-annotator/manifest.webmanifest",
+        "/SciModeler-study-annotator/polyfills.473d81133cdd8fa76063.js",
+        "/SciModeler-study-annotator/runtime.66b361e5e543abfbbf63.js",
+        "/SciModeler-study-annotator/styles.23385f19aa09823ed820.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/SciModeler-study-annotator/assets/documents/dhondt2019evaluation-annot.json",
+        "/SciModeler-study-annotator/assets/documents/dhondt2019evaluation.pdf",
+        "/SciModeler-study-annotator/assets/documents/nuijten2019evaluation-annot.json",
+        "/SciModeler-study-annotator/assets/documents/nuijten2019evaluation.pdf",
+        "/SciModeler-study-annotator/assets/documents/nuijten2021preadolescent-annot.json",
+        "/SciModeler-study-annotator/assets/documents/nuijten2021preadolescent.pdf",
+        "/SciModeler-study-annotator/assets/icons/close.svg",
+        "/SciModeler-study-annotator/assets/icons/github.svg",
+        "/SciModeler-study-annotator/assets/icons/highlighter.svg",
+        "/SciModeler-study-annotator/assets/icons/icon-128x128.png",
+        "/SciModeler-study-annotator/assets/icons/icon-144x144.png",
+        "/SciModeler-study-annotator/assets/icons/icon-152x152.png",
+        "/SciModeler-study-annotator/assets/icons/icon-192x192.png",
+        "/SciModeler-study-annotator/assets/icons/icon-384x384.png",
+        "/SciModeler-study-annotator/assets/icons/icon-512x512.png",
+        "/SciModeler-study-annotator/assets/icons/icon-72x72.png",
+        "/SciModeler-study-annotator/assets/icons/icon-96x96.png",
+        "/SciModeler-study-annotator/assets/icons/list.svg",
+        "/SciModeler-study-annotator/loading-icon.ff2dfa442d903d9d5e30.gif",
+        "/SciModeler-study-annotator/shadow.020ca14de41fcc6c4d0b.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/SciModeler-study-annotator/assets/documents/dhondt2019evaluation-annot.json": "9b2211d1ecf926cd37bf32beb42589eb237c9213",
+    "/SciModeler-study-annotator/assets/documents/dhondt2019evaluation.pdf": "11c9b28cfc80b974f98dd3f85cfcf310b3fcef8e",
+    "/SciModeler-study-annotator/assets/documents/nuijten2019evaluation-annot.json": "9abfc7c66cd4883499e2a0ef2a2865a7f91e6eeb",
+    "/SciModeler-study-annotator/assets/documents/nuijten2019evaluation.pdf": "bcfbb6f886e5ceee2fa7c1177521b84cc3c93f16",
+    "/SciModeler-study-annotator/assets/documents/nuijten2021preadolescent-annot.json": "d1964e9710d49fcad06e9aaddaa831f1ae3524b0",
+    "/SciModeler-study-annotator/assets/documents/nuijten2021preadolescent.pdf": "71e80fc50f4c4ab0c8f9aa2c4ac17dc953c5bc3b",
+    "/SciModeler-study-annotator/assets/icons/close.svg": "38bb5ff6822c24226ed21a8d3a468611300037b6",
+    "/SciModeler-study-annotator/assets/icons/github.svg": "b71ae94ed57c6e3a4a47b7edd976ad536e6536d2",
+    "/SciModeler-study-annotator/assets/icons/highlighter.svg": "7bdcd253e752b68bff46be0ca149ca97b13442a7",
+    "/SciModeler-study-annotator/assets/icons/icon-128x128.png": "b3d952aa983d116ba074faa176332b6008c5e0ba",
+    "/SciModeler-study-annotator/assets/icons/icon-144x144.png": "881bb276ef79380ecd840d32ef8ca50ef5e137ee",
+    "/SciModeler-study-annotator/assets/icons/icon-152x152.png": "10e1e096e52eb23821acb760ad9fa10ccc305f84",
+    "/SciModeler-study-annotator/assets/icons/icon-192x192.png": "ab6897f964c9c3fb0af40fca3d47f5fd12787e5d",
+    "/SciModeler-study-annotator/assets/icons/icon-384x384.png": "3cd010344723837ddf406d09668dac06e2e0afcd",
+    "/SciModeler-study-annotator/assets/icons/icon-512x512.png": "c6fc17fcba394288226bc9bc7a4dab9240ba4107",
+    "/SciModeler-study-annotator/assets/icons/icon-72x72.png": "7c2ecf7e7e59c532bc40a11ebd3fd59bfcf6eb91",
+    "/SciModeler-study-annotator/assets/icons/icon-96x96.png": "f502a343761cfd7508ec90099301793b0c71af0d",
+    "/SciModeler-study-annotator/assets/icons/list.svg": "7e35a612b37b548106a8efc4e4402a93615f7adc",
+    "/SciModeler-study-annotator/index.html": "71076ad01e7d731c1659aaf623519a9b385e1afc",
+    "/SciModeler-study-annotator/loading-icon.ff2dfa442d903d9d5e30.gif": "e043879d3ee94a3edf10260f21f44bfa4a6fc66e",
+    "/SciModeler-study-annotator/main.d41dd2d57aa6b79df47f.js": "670e611851f8b7b7c3596063a07fe80cc844fba2",
+    "/SciModeler-study-annotator/manifest.webmanifest": "01b2ca3de67192286107de8beb65965cb27cdbb7",
+    "/SciModeler-study-annotator/polyfills.473d81133cdd8fa76063.js": "999684c64216d0c6e5cf26ac0630ca84ff4b1f4d",
+    "/SciModeler-study-annotator/runtime.66b361e5e543abfbbf63.js": "b7fe2fa1bddb5fca7d507aa82b150d4aaa787951",
+    "/SciModeler-study-annotator/shadow.020ca14de41fcc6c4d0b.png": "b931e2de029146b2e1502ebd61c8160e72d6306c",
+    "/SciModeler-study-annotator/styles.23385f19aa09823ed820.css": "a8ded13bcf4c3183db038671b3ce08f559bb932d"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

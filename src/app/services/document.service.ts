@@ -4,6 +4,7 @@ import { Doc } from "../model/document.model";
 
 @Injectable()
 export class DocumentService {
+    
 
     docs: Doc[] = [
         {

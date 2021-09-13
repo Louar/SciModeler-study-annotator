@@ -5,6 +5,7 @@ import { environment } from "src/environments/environment";
 import { Doc } from "../model/document.model";
 import { Highlight } from '../model/highlight.model';
 import { Study } from "../model/study.model";
+import { DataModelService } from './data-model.service';
 
 @Injectable()
 export class HighlightService {
@@ -20,6 +21,7 @@ export class HighlightService {
 
     constructor(
         private http: HttpClient,
+        private dm: DataModelService,
     ) {
     }
 
@@ -91,9 +93,6 @@ export class HighlightService {
 
 
 
-    getActualRelations(rrefs: any) {
-        return this.study.relations;
-    }
 
     updateRelations(method: string, iids: string[]) {
         if (method === 'add') {
@@ -111,7 +110,7 @@ export class HighlightService {
         const rselected = this.study.relations.filter(r => r.iids.includes(iid)).map(r => r.iids).reduce((a, b) => a.concat(b), [])
             .filter(hiid => iid !== hiid);
 
-        const rallowed = this.study.highlights
+        const rallowed = [...new Map(this.study.highlights
             .filter((h: Highlight) => h.tags && h.tags.entity ? erefs.includes(h.tags.entity) : false)
             .map((h: Highlight) => (
                 {
@@ -119,17 +118,32 @@ export class HighlightService {
                     label: `${h.tags.entity}: ${h.tags.instance.label}`,
                     iids: [iid, h.tags.instance.ref],
                     entities: [highlight.tags.entity, h.tags.entity],
-                    // instances: [highlight.tags.instance, h.tags.instance],
                     isSelected: rselected.includes(h.tags.instance.ref || ''),
                 }
-            ));
+            )).map(item => [item.ref, item])).values()];
 
-        return [...new Map(rallowed.map(item => [item.ref, item])).values()];
+        if (highlight.tags.entity === 'Classification') {
+            const dm = this.dm.getDataModel();
+            for (const construct of dm.constructs) {
+                rallowed.push(
+                    {
+                        ref: `${iid} ${construct.name}`,
+                        label: `${construct.theory}: ${construct.name}`,
+                        iids: [iid, construct.name],
+                        entities: [highlight.tags.entity, 'Classification'],
+                        isSelected: rselected.includes(construct.name),
+                    }
+                );
+            }
+
+        }
+
+        return rallowed;
     }
 
 
 
-    getInstances(eref: string) {
+    getInstancesOfEntity(eref: string) {
         let instances = this.study.highlights
             .filter((h: Highlight) => h.tags?.entity === eref && h.tags.instance.ref && h.tags.instance.label)
             .map((h: Highlight) => h.tags.instance);

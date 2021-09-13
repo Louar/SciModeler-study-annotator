@@ -46,7 +46,7 @@
         <p>Relations</p>
         <ng-select [disabled]="!highlight.tags.entity || !highlight.tags.instance.ref" [items]="dm.relations"
             bindValue="ref" bindLabel="label" [multiple]="true" appearance="outline"
-            [(ngModel)]="highlight.tags.relations" (change)="persistHighlight()" (add)="updateRelations('add', $event)"
+            [(ngModel)]="hrelations" (change)="persistHighlight()" (add)="updateRelations('add', $event)"
             (remove)="updateRelations('remove', $event)">
         </ng-select>
     </label>
@@ -79,7 +79,7 @@
                     <p style="font-size: .8rem;">
                         {{ highlight.tags?.entity }}{{ highlight.tags?.attribute ? '.' + highlight.tags.attribute : '[NO ATTR.]' }}
                         <span style="margin: 0 10px;">{{ highlight.tags?.instance?.ref ? highlight.tags.instance.ref + ':' + highlight.tags.instance.label : '[NO INST.]' }}</span>
-                        {{ highlight.tags?.relations && highlight.tags?.relations?.length ? 'nrel=' + highlight.tags?.relations?.length : '[NO REL.]' }}
+                        {{ highlight.tags.instance.ref && nrelations[highlight.tags.instance.ref] ? 'nrel=' + nrelations[highlight.tags.instance.ref] : '[NO REL.]' }}
                     </p>
                 </div>
 

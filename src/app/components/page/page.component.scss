@@ -36,7 +36,7 @@
             }
 
             &.e-Context {
-                background-color: rgba(52, 172, 116, 0.4);
+                background-color: rgba(52, 172, 116, .4);
             }
 
             &.e-Intervention {
@@ -72,18 +72,19 @@
             }
 
             &.e-Variable {
-                background-color: rgba(208, 215, 224, .4);
+                background-color: rgba(129, 236, 191, .4);
             }
 
             &.e-Classification {
-                background-color: rgba(132, 204, 220, .4);
+                background-color: rgba(116, 185, 255, .4);
             }
+
             &.e-Source {
-                background-color: rgba(25, 160, 184, 0.4);
+                background-color: rgba(25, 160, 184, .4);
             }
 
             &.selected {
-                background-color: rgba(87, 101, 116, 0.6) !important;
+                background-color: rgba(87, 101, 116, .6) !important;
             }
         }
     }

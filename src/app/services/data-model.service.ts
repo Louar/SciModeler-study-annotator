@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { Study } from "../model/study.model";
 
 @Injectable()
 export class DataModelService {
@@ -132,7 +131,6 @@ export class DataModelService {
                     },
                     attributes: [
                         { ref: 'explanation', label: 'Explanation' },
-                        { ref: 'dimension', label: 'Dimension' },
                     ],
                 },
                 {
@@ -147,8 +145,6 @@ export class DataModelService {
                     ],
                 },
             ],
-
-
 
 
             relations: [
@@ -171,6 +167,20 @@ export class DataModelService {
                 { entities: ['Demographic', 'Variable'], type: 'ON_VARIABLE' },
                 { entities: ['TreatmentAssignment', 'Group'], type: 'TO_GROUP' },
                 { entities: ['Outcome', 'Variable'], type: 'BASED_ON_VARIABLE' },
+            ],
+
+
+            constructs: [
+                { theory: 'COM-B', name: 'Capability' },
+                { theory: 'COM-B / SDT', name: 'Motivation' },
+                { theory: 'COM-B', name: 'Opportunity' },
+
+                { theory: 'SDT', name: 'Autonomy' },
+                { theory: 'SDT', name: 'Competence' },
+                { theory: 'SDT', name: 'Relatedness' },
+                { theory: 'SDT', name: 'Extrinsic goal' },
+
+                { theory: 'GST', name: 'External incentive' },
             ]
         };
 
@@ -180,8 +190,8 @@ export class DataModelService {
 
 
 
-    getDataModel(): Promise<Study> {
-        return new Promise((resolve) => resolve(this.dm));
+    getDataModel() {
+        return this.dm;
     }
 
 

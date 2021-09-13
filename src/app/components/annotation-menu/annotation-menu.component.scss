@@ -71,7 +71,7 @@ h2 {
     }
 
     &.e-Context {
-        background-color: rgba(52, 172, 116, 0.4);
+        background-color: rgba(52, 172, 116, .4);
         border-color: rgba(52, 172, 116, 1);
     }
 
@@ -116,17 +116,17 @@ h2 {
     }
 
     &.e-Variable {
-        background-color: rgba(208, 215, 224, .4);
-        border-color: rgba(208, 215, 224, 1);
+        background-color: rgba(129, 236, 191, .4);
+        border-color: rgb(0, 206, 161);
     }
 
     &.e-Classification {
-        background-color: rgba(132, 204, 220, .4);
-        border-color: rgba(132, 204, 220, 1);
+        background-color: rgba(116, 185, 255, .4);
+        border-color: rgba(9, 132, 227, 1.0);
     }
 
     &.e-Source {
-        background-color: rgba(25, 160, 184, 0.4);
+        background-color: rgba(25, 160, 184, .4);
         border-color: rgba(25, 160, 184, 1);
     }
 }

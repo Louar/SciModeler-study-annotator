@@ -21,6 +21,8 @@ export class AppComponent implements OnInit {
   nump!: number;
   pnums!: number[];
 
+  dm!: any;
+
   doc: Doc | null = null;
   pdf!: PDFDocumentProxy;
 
@@ -66,6 +68,8 @@ export class AppComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.dm = this.dms.getDataModel();
+
     this.ds.document$.subscribe(
       async (doc: Doc) => {
         this.isReady = false;
@@ -160,6 +164,12 @@ export class AppComponent implements OnInit {
             const cmd = `MATCH (a:${ea}),(b:${eb}) WHERE a.key = '${sid}-${ra}' AND b.key = '${sid}-${ra}' CREATE (a)-[r:${rtype.substring(2)}]->(b) RETURN type(r);\n\n`;
             cypher += cmd;
           }
+        }
+      } else if (ha && ha.tags.entity === 'Classification') {
+        const constructs = this.dm.constructs.flatMap((t: any) => t.name);
+        if (constructs.includes(rb)) {
+          const cmd = `MATCH (a:Classification),(b:Construct) WHERE a.key = '${sid}-${ra}' AND b.name = '${sid}-${ra}' CREATE (a)-[r:AS_CONSTRUCT]->(b) RETURN type(r);\n\n`;
+          cypher += cmd;
         }
       }
     }

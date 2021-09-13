@@ -17,9 +17,11 @@ export class AnnotationMenuComponent implements OnInit, AfterViewInit {
 
   dm: any = {};
   highlight!: Highlight | null;
+  hrelations: string[] = [];
+
 
   highlights: Highlight[] | null = null;
-
+  nrelations: { [iid: string]: number } = {};
 
 
   constructor(
@@ -72,6 +74,8 @@ export class AnnotationMenuComponent implements OnInit, AfterViewInit {
         this.highlight = null;
       }
     }
+
+    this.showAllHighlights();
   }
 
 
@@ -93,7 +97,7 @@ export class AnnotationMenuComponent implements OnInit, AfterViewInit {
     }
 
     if (eref && components.includes('instances')) {
-      this.dm.instances = this.hs.getInstances(eref);
+      this.dm.instances = this.hs.getInstancesOfEntity(eref);
     }
 
     if (eref && components.includes('relations') && this.highlight?.tags && this.dm.instances.length > 0) {
@@ -101,7 +105,7 @@ export class AnnotationMenuComponent implements OnInit, AfterViewInit {
       this.dm.relations = this.hs.getAllowedRelations(this.highlight, rerefs);
 
       if (this.dm.relations) {
-        this.highlight.tags.relations = this.dm.relations.filter((r: any) => r.isSelected).map((r: any) => r.ref);
+        this.hrelations = this.dm.relations.filter((r: any) => r.isSelected).map((r: any) => r.ref);
       }
     }
   }
@@ -131,8 +135,14 @@ export class AnnotationMenuComponent implements OnInit, AfterViewInit {
         .sort((a: Highlight, b: Highlight) => a.position.pnum - b.position.pnum);
     }
 
-
-
+    const iids = [... new Set(this.highlights?.map(h => h.tags.instance.ref))];
+    this.nrelations = {};
+    for (const iid of iids) {
+      if (iid) {
+        this.nrelations[iid] = study.relations.filter(r => r.iids.includes(iid)).map(r => r.iids).reduce((a, b) => a.concat(b), [])
+        .filter(hiid => iid !== hiid).length;
+      }
+    }
   }
 
 

@@ -15,7 +15,6 @@ export class Highlight {
         entity?: string,
         instance: { ref?: string, label?: string },
         attribute?: string,
-        relations?: string[],
     };
     likes?: {
         nlikes: number,

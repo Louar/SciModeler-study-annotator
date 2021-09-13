@@ -161,14 +161,14 @@ export class AppComponent implements OnInit {
         if (ea && eb) {
           const rtype = this.dms.getRelationType(ea, eb);
           if (rtype) {
-            const cmd = `MATCH (a:${ea}),(b:${eb}) WHERE a.key = '${sid}-${ra}' AND b.key = '${sid}-${ra}' CREATE (a)-[r:${rtype.substring(2)}]->(b) RETURN type(r);\n\n`;
+            const cmd = `MATCH (a:${ea}),(b:${eb}) WHERE a.key = '${sid}-${ra.substring(2)}' AND b.key = '${sid}-${rb.substring(2)}' CREATE (a)-[r:${rtype}]->(b) RETURN type(r);\n\n`;
             cypher += cmd;
           }
         }
       } else if (ha && ha.tags.entity === 'Classification') {
         const constructs = this.dm.constructs.flatMap((t: any) => t.name);
         if (constructs.includes(rb)) {
-          const cmd = `MATCH (a:Classification),(b:Construct) WHERE a.key = '${sid}-${ra}' AND b.name = '${sid}-${ra}' CREATE (a)-[r:AS_CONSTRUCT]->(b) RETURN type(r);\n\n`;
+          const cmd = `MATCH (a:Classification),(b:Construct) WHERE a.key = '${sid}-${ra.substring(2)}' AND b.name = '${rb}' CREATE (a)-[r:AS_CONSTRUCT]->(b) RETURN type(r);\n\n`;
           cypher += cmd;
         }
       }

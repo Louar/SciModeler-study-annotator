@@ -37,7 +37,7 @@ export class HighlightService {
         if (doc.annoturi) {
             await new Promise<void>((resolve) => {
                 if (doc.annoturi) {
-                    this.http.get((environment.production ? 'https://gitcdn.link/repo/Louar/SciModeler-study-annotator/main/docs' : '') + doc.annoturi).subscribe(
+                    this.http.get((environment.production ? 'https://gitcdn.link/cdn/Louar/SciModeler-study-annotator/main/docs' : '') + doc.annoturi).subscribe(
                         (data: any) => {
                             study = data as Study;
                             resolve();

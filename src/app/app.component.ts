@@ -89,7 +89,7 @@ export class AppComponent implements OnInit {
 
   async getDocument(uri: string): Promise<void> {
 
-    await getDocument((environment.production ? 'https://gitcdn.link/repo/Louar/SciModeler-study-annotator/main/docs' : '') + uri).promise.then(
+    await getDocument((environment.production ? 'https://gitcdn.link/cdn/Louar/SciModeler-study-annotator/main/docs' : '') + uri).promise.then(
       (pdf: PDFDocumentProxy) => {
         this.pdf = pdf;
       }

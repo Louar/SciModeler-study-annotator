@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1631540558221,
+  "timestamp": 1631541592353,
   "index": "/SciModeler-study-annotator/index.html",
   "assetGroups": [
     {
@@ -54,11 +54,11 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/SciModeler-study-annotator/assets/documents/dhondt2019evaluation-annot.json": "d5769ec63ea55afa8c7c4ae6133ce3393a5fae05",
+    "/SciModeler-study-annotator/assets/documents/dhondt2019evaluation-annot.json": "c2f62afe00168f0726ccbb0cc84607879578cae7",
     "/SciModeler-study-annotator/assets/documents/dhondt2019evaluation.pdf": "11c9b28cfc80b974f98dd3f85cfcf310b3fcef8e",
     "/SciModeler-study-annotator/assets/documents/nuijten2019evaluation-annot.json": "213a3cbdf6a786c104e703000589f70471a68f19",
     "/SciModeler-study-annotator/assets/documents/nuijten2019evaluation.pdf": "bcfbb6f886e5ceee2fa7c1177521b84cc3c93f16",
-    "/SciModeler-study-annotator/assets/documents/nuijten2021preadolescent-annot.json": "2c4672cdcd9ac192606e041deddb62d645659dfa",
+    "/SciModeler-study-annotator/assets/documents/nuijten2021preadolescent-annot.json": "384faf9600099f59e202c6d6127e64d68e0bf809",
     "/SciModeler-study-annotator/assets/documents/nuijten2021preadolescent.pdf": "71e80fc50f4c4ab0c8f9aa2c4ac17dc953c5bc3b",
     "/SciModeler-study-annotator/assets/icons/close.svg": "38bb5ff6822c24226ed21a8d3a468611300037b6",
     "/SciModeler-study-annotator/assets/icons/github.svg": "b71ae94ed57c6e3a4a47b7edd976ad536e6536d2",
@@ -72,7 +72,7 @@
     "/SciModeler-study-annotator/assets/icons/icon-72x72.png": "7c2ecf7e7e59c532bc40a11ebd3fd59bfcf6eb91",
     "/SciModeler-study-annotator/assets/icons/icon-96x96.png": "f502a343761cfd7508ec90099301793b0c71af0d",
     "/SciModeler-study-annotator/assets/icons/list.svg": "7e35a612b37b548106a8efc4e4402a93615f7adc",
-    "/SciModeler-study-annotator/index.html": "7a17fccd621b3fc593fd6ef93ba347e32eb815ac",
+    "/SciModeler-study-annotator/index.html": "6b0c134aee22ee47386f710180852c740467b555",
     "/SciModeler-study-annotator/loading-icon.ff2dfa442d903d9d5e30.gif": "e043879d3ee94a3edf10260f21f44bfa4a6fc66e",
     "/SciModeler-study-annotator/main.eb196f3fa5f60e0d7def.js": "3b2453aaaa5183801669d7ac85488a04286153a9",
     "/SciModeler-study-annotator/manifest.webmanifest": "01b2ca3de67192286107de8beb65965cb27cdbb7",

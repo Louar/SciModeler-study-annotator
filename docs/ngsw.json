@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1631541592353,
+  "timestamp": 1631872572315,
   "index": "/SciModeler-study-annotator/index.html",
   "assetGroups": [
     {
@@ -54,11 +54,11 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/SciModeler-study-annotator/assets/documents/dhondt2019evaluation-annot.json": "c2f62afe00168f0726ccbb0cc84607879578cae7",
+    "/SciModeler-study-annotator/assets/documents/dhondt2019evaluation-annot.json": "46d284686c183e96e09896a4fc630d2fe213596a",
     "/SciModeler-study-annotator/assets/documents/dhondt2019evaluation.pdf": "11c9b28cfc80b974f98dd3f85cfcf310b3fcef8e",
-    "/SciModeler-study-annotator/assets/documents/nuijten2019evaluation-annot.json": "213a3cbdf6a786c104e703000589f70471a68f19",
+    "/SciModeler-study-annotator/assets/documents/nuijten2019evaluation-annot.json": "186958e81014d5dad8dcb285940d472244249bb2",
     "/SciModeler-study-annotator/assets/documents/nuijten2019evaluation.pdf": "bcfbb6f886e5ceee2fa7c1177521b84cc3c93f16",
-    "/SciModeler-study-annotator/assets/documents/nuijten2021preadolescent-annot.json": "384faf9600099f59e202c6d6127e64d68e0bf809",
+    "/SciModeler-study-annotator/assets/documents/nuijten2021preadolescent-annot.json": "a1de01cf1ee9c40d91c688315c09fbca13d6db15",
     "/SciModeler-study-annotator/assets/documents/nuijten2021preadolescent.pdf": "71e80fc50f4c4ab0c8f9aa2c4ac17dc953c5bc3b",
     "/SciModeler-study-annotator/assets/icons/close.svg": "38bb5ff6822c24226ed21a8d3a468611300037b6",
     "/SciModeler-study-annotator/assets/icons/github.svg": "b71ae94ed57c6e3a4a47b7edd976ad536e6536d2",

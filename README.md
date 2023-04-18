@@ -11,7 +11,7 @@ This software assists the extraction of semantic data from articles on empirical
 1. Confirm that the (local) environment has [Node](https://nodejs.org/en/) (> v15.4.0) and [NPM](https://www.npmjs.com) (> 7.11.0) installed.
 
 ### Local installation
-1. Clone the **master** branch from this GitHub repository, e.g. using [Sourcetree](https://www.sourcetreeapp.com).
+1. Clone the **main** branch from this GitHub repository, e.g. using [Sourcetree](https://www.sourcetreeapp.com).
 2. In a Terminal window, navigate to the project folder and run `$ npm i`.
 3. To run the project locally, run `$ ng serve`.
 4. Open a new browser window and navigate to [http://localhost:4200/](http://localhost:4200/).
